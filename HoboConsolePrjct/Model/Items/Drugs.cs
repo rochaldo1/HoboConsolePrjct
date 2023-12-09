@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HoboConsole.Model.Items.Base;
+using HoboConsolePrjct.Model.Hobo;
 
 namespace HoboConsole.Model.Items
 {
@@ -14,6 +15,8 @@ namespace HoboConsole.Model.Items
         public string Name { get; }
         public decimal Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
         public int Healthy { get; } //Определяет насколько увеличится или уменьшится здоровье
+
+        public int EnergyBoost {  get; }
         public ItemTypeEnum ItemType { get; }
 
         public Drugs(Guid id, decimal price, string name, decimal pleasure, int healthy, ItemTypeEnum itemType)
@@ -28,7 +31,12 @@ namespace HoboConsole.Model.Items
 
         public void Effect(IHobo hobo, IItem item)
         {
-            throw new NotImplementedException();
+            if(item is Drugs drugs)
+            {
+                hobo.EmotionalState += drugs.Pleasure;
+                hobo.Health += drugs.Healthy;
+                hobo.Energy += drugs.EnergyBoost;
+            }
         }
     }
 }

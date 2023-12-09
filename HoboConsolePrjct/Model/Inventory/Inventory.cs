@@ -1,21 +1,22 @@
 ﻿using HoboConsole.Model.Items.Base;
 using HoboConsole.Model.Stacks;
-
+using HoboConsolePrjct.Model.Hobo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoboConsole.Model
+namespace HoboConsolePrjct.Model.Inventory
 {
-    public class Inventory
+    public class Inventory : IInventory
     {
 
         private List<IStack> stacks = new();
+
         public Inventory() {; }
 
-        public void AddStack(IStack item) => stacks.Add((item));
+        public void AddStack(IStack item) => stacks.Add(item);
 
         public void DeleteItem(int i)
         {

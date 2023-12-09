@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HoboConsole.Model.Items.Base;
+using HoboConsolePrjct.Model.Hobo;
 
 
 namespace HoboConsole.Model.Items
@@ -16,6 +17,8 @@ namespace HoboConsole.Model.Items
         public decimal Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
         public ItemTypeEnum ItemType { get; }
         public int Nutrition { get; } //Определяет энергетическую ценность еды
+
+        public int EnergyBoost { get; }
         public int Healthy { get; } //Определяет насколько увеличится или уменьшится здоровье
 
         public Food(Guid id, decimal price, string name, decimal pleasure, ItemTypeEnum itemType, int nutrition, int healthy)
@@ -34,6 +37,8 @@ namespace HoboConsole.Model.Items
             if (item is Food food)
             {
                 hobo.Health += food.Healthy;
+                hobo.Hunger += food.Nutrition;
+                hobo.Energy += food.EnergyBoost;
             }
         }
     }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoboConsole.Model
+namespace HoboConsolePrjct.Model.Hobo
 {
-    public interface IHobo
+    public interface IHobo : IEntety
     {
         public string Name { get; }
         public int Health { get; set; }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HoboConsole.Model.Items.Base;
+using HoboConsolePrjct.Model.Hobo;
 
 namespace HoboConsole.Model.Items
 {
@@ -26,7 +27,10 @@ namespace HoboConsole.Model.Items
 
         public void Effect(IHobo hobo, IItem item)
         {
-            throw new NotImplementedException();
+            if(item is RealEstate estate)
+            {
+                hobo.EmotionalState += estate.Pleasure;
+            }
         }
     }
 }
