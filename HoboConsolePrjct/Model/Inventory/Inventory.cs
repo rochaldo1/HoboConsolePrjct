@@ -25,16 +25,12 @@ namespace HoboConsolePrjct.Model.Inventory
         }
         public bool UseItem(int i)
         {
-            //var p = from selectItem in stacks
-            //        where item.Id == selectItem.Id
-            //        select selectItem;
-            //if(p == null) return false;
-            //return true;
+            if (stacks.Count == 0 || (i > stacks.Count-1)) return false;
             if (CheckCount.Check(stacks[i]))
             {
                 //
                 stacks[i].Count--;
-                if(CheckCount.Check(stacks[i])) return true;
+                if (CheckCount.Check(stacks[i])) return true;
                 DeleteItem(i);
                 return true;
             }
