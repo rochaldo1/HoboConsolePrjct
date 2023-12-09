@@ -28,7 +28,7 @@ namespace HoboConsole.Model.Items
         }
         public void Effect(IHobo hobo, IItem item)
         {
-            ChangeStatic.EmotionalChange(hobo, item);
+            ChangeValueStatic.EmotionalChange(hobo, item);
         }
     }
 }

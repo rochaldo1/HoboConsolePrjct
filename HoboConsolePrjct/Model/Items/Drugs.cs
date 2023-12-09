@@ -33,9 +33,9 @@ namespace HoboConsole.Model.Items
 
         public void Effect(IHobo hobo, IItem item)
         {
-            ChangeStatic.HealthChange(hobo, item);
-            ChangeStatic.EnergySatiation(hobo, item);
-            ChangeStatic.EmotionalChange(hobo, item);
+            ChangeValueStatic.HealthChange(hobo, item);
+            ChangeValueStatic.EnergyChange(hobo, item);
+            ChangeValueStatic.EmotionalChange(hobo, item);
         }
     }
 }
