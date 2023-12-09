@@ -4,20 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HoboConsole.Model.Items.Base;
+using HoboConsolePrjct.Model.Effects;
 using HoboConsolePrjct.Model.Hobo;
-
+using HoboConsolePrjct.Model;
 
 namespace HoboConsole.Model.Items
 {
-    public class Clothes : IItem
+    public class Clothes : IItem, IEntity
     {
         public Guid Id { get; }
         public decimal Price { get; }
         public string Name { get; }
-        public decimal Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
+        public int Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
         public ItemTypeEnum ItemType { get; }
 
-        public Clothes(Guid id, decimal price, string name, decimal pleasure, ItemTypeEnum itemTypeEnum)
+        public Clothes(Guid id, decimal price, string name, int pleasure, ItemTypeEnum itemTypeEnum)
         {
             Id = id;
             Price = price;
@@ -27,10 +28,7 @@ namespace HoboConsole.Model.Items
         }
         public void Effect(IHobo hobo, IItem item)
         {
-            if (item is Clothes clothes)
-            {
-                hobo.EmotionalState += clothes.Pleasure;
-            }
+            ChangeStatic.EmotionalChange(hobo, item);
         }
     }
 }

@@ -13,23 +13,26 @@ namespace HoboConsolePrjct.Model.Hobo
         public string Name { get; }
         public int Health { get; set; }
         public int Energy { get; set; }
-        public int Hunger { get; set; }
-        public decimal EmotionalState { get; set; }
-        //public Inventory Inventory { get; set; }
+        public int Satiation { get; set; }
+        public int EmotionalState { get; set; }
+        public int Money { get; set; }
+
+        public List<int> Changes { get; set; }
+
         public Inventory inventory = new();
 
-        public Hobo(string name, int health, int energy, int hunger, decimal emotionalState)
+        public Hobo(string name, int health, int energy, int satiation, int emotionalState)
         {
             Name = name;
             Health = health;
             Energy = energy;
-            Hunger = hunger;
+            Satiation = satiation;
             EmotionalState = emotionalState;
         }
 
         public override string ToString()
         {
-            return $"Имя: {Name}\nЗдоровье: {Health}\nЭнергия: {Energy}\nГолод: {Hunger}\nЭМОТИОНАЛ ДАМАГЕ:{EmotionalState}\n";
+            return $"Имя: {Name}\nЗдоровье: {Health}\nЭнергия: {Energy}\nНАСЫЩЕНИЕ: {Satiation}\nЭМОТИОНАЛ ДАМАГЕ:{EmotionalState}\n";
         }
     }
 }

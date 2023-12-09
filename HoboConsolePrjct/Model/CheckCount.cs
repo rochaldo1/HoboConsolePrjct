@@ -11,7 +11,7 @@ namespace HoboConsolePrjct.Model
     {
         public static bool Check(IStack stack)
         {
-            if(stack.Count<=0 ) return false;
+            if (stack.Count <= 0) return false;
             return true;
         }
     }

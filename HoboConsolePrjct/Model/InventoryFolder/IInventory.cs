@@ -13,6 +13,6 @@ namespace HoboConsolePrjct.Model.InventoryFolder
     {
         public void AddStack(IStack item);
         public void DeleteItem(int i);
-        public bool UseItem(int i, IHobo hobo);
+        public bool UseItem(IHobo hobo, int i);
     }
 }

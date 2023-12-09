@@ -25,7 +25,7 @@ namespace HoboConsolePrjct.Model.InventoryFolder
         }
 
 
-        public bool UseItem(int i, IHobo hobo)
+        public bool UseItem(IHobo hobo, int i)
         {
             if (stacks.Count == 0 || (i > stacks.Count - 1)) return false;
             if (CheckCount.Check(stacks[i]))

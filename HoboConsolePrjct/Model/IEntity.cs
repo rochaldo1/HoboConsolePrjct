@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HoboConsolePrjct.Model
 {
-    public interface IEntety
+    public interface IEntity
     {
         public Guid Id { get; }
     }

@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HoboConsole.Model.Items.Base;
+using HoboConsolePrjct.Model.Effects;
 using HoboConsolePrjct.Model.Hobo;
+using HoboConsolePrjct.Model;
 
 
 namespace HoboConsole.Model.Items
 {
-    public class Food : IItem
+    public class Food : IItem, IEntity
     {
         public Guid Id { get; }
         public decimal Price { get; }
         public string Name { get; }
-        public decimal Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
+        public int Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
         public ItemTypeEnum ItemType { get; }
         public int Nutrition { get; } //Определяет энергетическую ценность еды
-
         public int EnergyBoost { get; }
         public int Healthy { get; } //Определяет насколько увеличится или уменьшится здоровье
 
-        public Food(Guid id, decimal price, string name, decimal pleasure, ItemTypeEnum itemType, int nutrition, int healthy)
+        public Food(Guid id, decimal price, string name, int pleasure, ItemTypeEnum itemType, int nutrition, int energyBoost, int healthy)
         {
             Id = id;
             Price = price;
@@ -29,17 +30,16 @@ namespace HoboConsole.Model.Items
             Pleasure = pleasure;
             ItemType = itemType;
             Nutrition = nutrition;
+            EnergyBoost = energyBoost;
             Healthy = healthy;
         }
 
         public void Effect(IHobo hobo, IItem item)
         {
-            if (item is Food food)
-            {
-                hobo.Health += food.Healthy;
-                hobo.Hunger += food.Nutrition;
-                hobo.Energy += food.EnergyBoost;
-            }
+            ChangeStatic.HealthChange(hobo, item);
+            ChangeStatic.EnergySatiation(hobo, item);
+            ChangeStatic.EmotionalChange(hobo, item);
+            ChangeStatic.SatiationChange(hobo, item);
         }
     }
 }
