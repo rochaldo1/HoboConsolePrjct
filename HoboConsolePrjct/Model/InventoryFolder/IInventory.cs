@@ -7,13 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using HoboConsolePrjct.Model.Hobo;
 
-namespace HoboConsolePrjct.Model.Inventory
+namespace HoboConsolePrjct.Model.InventoryFolder
 {
     public interface IInventory
     {
         public void AddStack(IStack item);
-
         public void DeleteItem(int i);
-        public bool UseItem(int i);
+        public bool UseItem(int i, IHobo hobo);
     }
 }

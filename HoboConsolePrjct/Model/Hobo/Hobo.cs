@@ -1,4 +1,4 @@
-﻿using HoboConsolePrjct.Model.Inventory;
+﻿using HoboConsolePrjct.Model.InventoryFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,8 @@ namespace HoboConsolePrjct.Model.Hobo
         public int Energy { get; set; }
         public int Hunger { get; set; }
         public decimal EmotionalState { get; set; }
-        public IInventory inventory { get; set; }
+        //public Inventory Inventory { get; set; }
+        public Inventory inventory = new();
 
         public Hobo(string name, int health, int energy, int hunger, decimal emotionalState)
         {
@@ -28,7 +29,7 @@ namespace HoboConsolePrjct.Model.Hobo
 
         public override string ToString()
         {
-            return $"ЭМОТИОНАЛ ДАМАГЕ:{EmotionalState} здоровье: {Health}\n";
+            return $"Имя: {Name}\nЗдоровье: {Health}\nЭнергия: {Energy}\nГолод: {Hunger}\nЭМОТИОНАЛ ДАМАГЕ:{EmotionalState}\n";
         }
     }
 }

@@ -16,15 +16,17 @@ namespace HoboConsole.Model.Items
         public string Name { get; }
         public decimal Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
         public int Healthy { get; } //Определяет насколько увеличится или уменьшится здоровье
+        public int EnergyBoost { get; }
         public ItemTypeEnum ItemType { get; }
 
-        public Medicine(Guid id, decimal price, string name, decimal pleasure, int healthy, ItemTypeEnum itemType)
+        public Medicine(Guid id, decimal price, string name, decimal pleasure, int healthy, int energyBoost, ItemTypeEnum itemType)
         {
             Id = id;
             Price = price;
             Name = name;
             Pleasure = pleasure;
             Healthy = healthy;
+            EnergyBoost = energyBoost;
             ItemType = itemType;
         }
 

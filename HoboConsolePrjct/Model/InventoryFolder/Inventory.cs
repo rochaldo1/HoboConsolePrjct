@@ -8,7 +8,7 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoboConsolePrjct.Model.Inventory
+namespace HoboConsolePrjct.Model.InventoryFolder
 {
     public class Inventory : IInventory
     {
@@ -23,12 +23,14 @@ namespace HoboConsolePrjct.Model.Inventory
         {
             stacks.RemoveAt(i);
         }
-        public bool UseItem(int i)
+
+
+        public bool UseItem(int i, IHobo hobo)
         {
-            if (stacks.Count == 0 || (i > stacks.Count-1)) return false;
+            if (stacks.Count == 0 || (i > stacks.Count - 1)) return false;
             if (CheckCount.Check(stacks[i]))
             {
-                //
+                stacks[i].Item.Effect(hobo, stacks[i].Item);
                 stacks[i].Count--;
                 if (CheckCount.Check(stacks[i])) return true;
                 DeleteItem(i);
@@ -42,7 +44,8 @@ namespace HoboConsolePrjct.Model.Inventory
             string s = string.Empty;
             for (var i = 0; i < stacks.Count; i++)
             {
-                s += stacks[i].Item.ToString();
+                s += stacks[i].Item.Name.ToString();
+                s += " " + stacks[i].Count.ToString();
             }
             return s;
         }
