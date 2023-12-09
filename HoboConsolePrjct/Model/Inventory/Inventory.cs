@@ -4,6 +4,7 @@ using HoboConsolePrjct.Model.Hobo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,10 +23,22 @@ namespace HoboConsolePrjct.Model.Inventory
         {
             stacks.RemoveAt(i);
         }
-        public void ApplyEffect(IHobo hobo, IItem item, int i)
+        public bool UseItem(int i)
         {
-            stacks[i].Item.Effect(hobo, item);
-            DeleteItem(i);
+            //var p = from selectItem in stacks
+            //        where item.Id == selectItem.Id
+            //        select selectItem;
+            //if(p == null) return false;
+            //return true;
+            if (CheckCount.Check(stacks[i]))
+            {
+                //
+                stacks[i].Count--;
+                if(CheckCount.Check(stacks[i])) return true;
+                DeleteItem(i);
+                return true;
+            }
+            return false;
         }
 
         public override string ToString()

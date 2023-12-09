@@ -14,7 +14,6 @@ namespace HoboConsolePrjct.Model.Inventory
         public void AddStack(IStack item);
 
         public void DeleteItem(int i);
-
-        public void ApplyEffect(IHobo hobo, IItem item, int i);
+        public bool UseItem(int i);
     }
 }

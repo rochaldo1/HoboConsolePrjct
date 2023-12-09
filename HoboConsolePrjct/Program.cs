@@ -23,7 +23,7 @@ namespace HoboConsole
 
             Hobo hobo = new("БомжарА", 23, 44, 1, 23);
             hobo.inventory.AddStack(stackFood);
-
+            hobo.inventory.UseItem()
         }
     }
 }
