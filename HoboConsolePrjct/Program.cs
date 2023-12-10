@@ -3,6 +3,7 @@ using HoboConsole.Model.Items;
 using HoboConsole.Model.Stacks;
 using HoboConsolePrjct.Model.InventoryFolder;
 using HoboConsolePrjct.Model.Hobo;
+using HoboConsolePrjct.Data;
 
 namespace HoboConsole
 {
@@ -10,14 +11,18 @@ namespace HoboConsole
     {
         static void Main(string[] args)
         {
+            HoboRepository serializeUsers = new HoboRepository("C:\\Users\\dima2\\source\\repos\\TRYMODEL\\TRYMODEL\\bin\\Debug\\net8.0\\usersJS2.json");
+            //serializeUsers.Load();
             Food food = new Food(Guid.NewGuid(), 500M, "ЕДА", 25, ItemTypeEnum.Food, 23, 5, 21);
             StackItems stackFood = new StackItems(food, 3);
             Food food2 = new Food(Guid.NewGuid(), 100000M, "ГОВНИЩЕ", -12, ItemTypeEnum.Food, -51, -31, 1000);
             StackItems stackFood2 = new StackItems(food2, 1);
             Clothes clothes = new Clothes(Guid.NewGuid(), 600M, "ОДЕЖДА", 2, ItemTypeEnum.Clothes);
             StackItems stackClothes = new(clothes, 5);
+            Inventory inventory = new();
+            inventory.AddStack(stackFood);
 
-            Hobo hobo = new("БомжарА", 100, 100, 100, 50);
+            Hobo hobo = new("БомжарА", 100, 100, 100, 50,500, inventory);
             hobo.inventory.AddStack(stackFood);
             hobo.inventory.AddStack(stackFood2);
             hobo.inventory.AddStack(stackClothes);

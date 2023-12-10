@@ -17,17 +17,17 @@ namespace HoboConsolePrjct.Model.Hobo
         public int EmotionalState { get; set; }
         public int Money { get; set; }
 
-        public List<int> Changes { get; set; }
-
         public Inventory inventory = new();
 
-        public Hobo(string name, int health, int energy, int satiation, int emotionalState)
+        public Hobo(string name, int health, int energy, int satiation, int emotionalState, int money, Inventory inventory)
         {
             Name = name;
             Health = health;
             Energy = energy;
             Satiation = satiation;
             EmotionalState = emotionalState;
+            Money = money;
+            this.inventory = inventory;
         }
 
         public override string ToString()
