@@ -7,16 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HoboConsolePrjct.Model;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 
 namespace HoboConsole.Model.Items
 {
     public class Garbage : IItem, IEntity
     {
-        public Guid Id { get; }
+        public Guid Id { get; set; }
         public decimal Price { get; }
         public string Name { get; }
         public int Pleasure { get; }
         public int Healthy { get; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public ItemTypeEnum ItemType { get; }
 
         public Garbage(Guid id, decimal price, string name, int pleasure, int healthy, ItemTypeEnum itemTypeEnum)

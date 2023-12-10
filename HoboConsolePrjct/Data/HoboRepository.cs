@@ -1,9 +1,10 @@
-﻿using HoboConsolePrjct.Model.Hobo;
+﻿using HoboConsolePrjct.Model;
+using HoboConsolePrjct.Model.Hobo;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace HoboConsolePrjct.Data
@@ -49,13 +50,18 @@ namespace HoboConsolePrjct.Data
             }
             return false;
         }
+
+        public List<Hobo> GetHobos() => _hoboList;
+
         public bool Save()
         {
+            
             if (_hoboList == null) return false;
             using var stream = File.Open(path, FileMode.Create);
             using var writer = new StreamWriter(stream);
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string saveJson = JsonSerializer.Serialize(_hoboList, options);
+            //var options = new JsonSerializerOptions { WriteIndented = true };
+            //string saveJson = JsonSerializer.Serialize(_hoboList, options);
+            string saveJson = JsonConvert.SerializeObject(_hoboList, Formatting.Indented, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
             writer.Write(saveJson);
             return true;
         }
@@ -70,7 +76,7 @@ namespace HoboConsolePrjct.Data
             using var reader = new StreamReader(stream);
             string parseJson = reader.ReadToEnd();
             if (parseJson == null) return false;
-            _hoboList = JsonSerializer.Deserialize<List<Hobo>>(parseJson);
+            _hoboList = JsonConvert.DeserializeObject<List<Hobo>>(parseJson, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
             return true;
         }
 

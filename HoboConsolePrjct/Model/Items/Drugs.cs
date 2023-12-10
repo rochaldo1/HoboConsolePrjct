@@ -7,17 +7,20 @@ using HoboConsole.Model.Items.Base;
 using HoboConsolePrjct.Model.Effects;
 using HoboConsolePrjct.Model.Hobo;
 using HoboConsolePrjct.Model;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 
 namespace HoboConsole.Model.Items
 {
     public class Drugs : IItem, IEntity
     {
-        public Guid Id { get; }
+        public Guid Id { get; set; }
         public decimal Price { get; }
         public string Name { get; }
         public int Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
         public int Healthy { get; } //Определяет насколько увеличится или уменьшится здоровье
         public int EnergyBoost { get; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public ItemTypeEnum ItemType { get; }
 
         public Drugs(Guid id, decimal price, string name, int pleasure, int healthy, int energyBoost, ItemTypeEnum itemType)

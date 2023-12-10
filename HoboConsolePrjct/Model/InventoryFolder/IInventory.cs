@@ -12,6 +12,7 @@ namespace HoboConsolePrjct.Model.InventoryFolder
     public interface IInventory
     {
         public void AddStack(IStack item);
+        public List<IStack> ShowInventory();
         public void DeleteItem(int i);
         public bool UseItem(IHobo hobo, int i);
     }
