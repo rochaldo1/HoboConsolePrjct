@@ -11,7 +11,7 @@ namespace HoboConsole
     {
         static void Main(string[] args)
         {
-            HoboRepository serializeUsers = new HoboRepository("C:\\Users\\dima2\\Desktop\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\Hobos.json");
+            HoboRepository serializeUsers = new HoboRepository("C:\\Users\\Artur\\source\\repos\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\Hobos.json");
 
             serializeUsers.Load();
             List<Hobo> usersFromJson = serializeUsers.GetHobos();
@@ -42,7 +42,6 @@ namespace HoboConsole
             //Console.WriteLine(hobo.inventory.ToString() + "\n");
             //serializeUsers.Add(hobo);
             //serializeUsers.Save();
-
         }
     }
 }
