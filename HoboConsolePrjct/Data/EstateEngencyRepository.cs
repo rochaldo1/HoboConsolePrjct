@@ -13,6 +13,8 @@ namespace HoboConsolePrjct.Data
         protected EstateEngency _estateEngency;
         private string path = string.Empty;
 
+        public EstateEngency GetEstateEngency() => _estateEngency;
+
         public EstateEngencyRepository(string path)
         {
             this.path = path;

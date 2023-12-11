@@ -13,6 +13,8 @@ namespace HoboConsolePrjct.Data
         protected Hospital _hospital;
         private string path = string.Empty;
 
+        public Hospital GetHospital() => _hospital;
+
         public HospitalRepository(string path)
         {
             this.path = path;

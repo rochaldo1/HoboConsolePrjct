@@ -26,7 +26,7 @@ namespace HoboConsolePrjct.Data
             _store = entity;
             return true;
         }
-
+        public Stores GetStores() => _store;
         public bool Update(Stores entity)
         {
             bool p = Add(entity);

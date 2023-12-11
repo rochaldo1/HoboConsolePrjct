@@ -13,6 +13,8 @@ namespace HoboConsolePrjct.Data
         protected DrugDen _drugDen;
         private string path = string.Empty;
 
+        public DrugDen GetDrugDen() => _drugDen;
+
         public DrugDenRepository(string path)
         {
             this.path = path;
