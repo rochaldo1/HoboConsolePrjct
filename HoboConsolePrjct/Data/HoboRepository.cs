@@ -55,7 +55,6 @@ namespace HoboConsolePrjct.Data
 
         public bool Save()
         {
-            
             if (_hoboList == null) return false;
             using var stream = File.Open(path, FileMode.Create);
             using var writer = new StreamWriter(stream);
