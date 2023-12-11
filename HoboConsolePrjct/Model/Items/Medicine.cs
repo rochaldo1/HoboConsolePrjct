@@ -16,7 +16,7 @@ namespace HoboConsole.Model.Items
     public class Medicine : IItem, IEntity
     {
         public Guid Id { get; set; }
-        public decimal Price { get; }
+        public int Price { get; }
         public string Name { get; }
         public int Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
         public int Healthy { get; } //Определяет насколько увеличится или уменьшится здоровье
@@ -24,7 +24,7 @@ namespace HoboConsole.Model.Items
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemTypeEnum ItemType { get; }
 
-        public Medicine(Guid id, decimal price, string name, int pleasure, int healthy, int energyBoost, ItemTypeEnum itemType)
+        public Medicine(Guid id, int price, string name, int pleasure, int healthy, int energyBoost, ItemTypeEnum itemType)
         {
             Id = id;
             Price = price;

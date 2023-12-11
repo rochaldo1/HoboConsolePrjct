@@ -16,7 +16,7 @@ namespace HoboConsole.Model.Items
     public class Food : IItem, IEntity
     {
         public Guid Id { get; set; }
-        public decimal Price { get; }
+        public int Price { get; }
         public string Name { get; }
         public int Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
         [JsonConverter(typeof(StringEnumConverter))]
@@ -25,7 +25,7 @@ namespace HoboConsole.Model.Items
         public int EnergyBoost { get; }
         public int Healthy { get; } //Определяет насколько увеличится или уменьшится здоровье
 
-        public Food(Guid id, decimal price, string name, int pleasure, ItemTypeEnum itemType, int nutrition, int energyBoost, int healthy)
+        public Food(Guid id, int price, string name, int pleasure, ItemTypeEnum itemType, int nutrition, int energyBoost, int healthy)
         {
             Id = id;
             Price = price;

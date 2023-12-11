@@ -30,24 +30,17 @@ namespace HoboConsolePrjct.Model.InventoryFolder
         {
             stacks.RemoveAt(i);
         }
-        public bool UseItem(IHobo hobo, int i)
-        {
-            if (stacks.Count == 0 || (i > stacks.Count - 1)) return false;
-            if (CheckCount.Check(stacks[i]))
-            {
-                stacks[i].Item.Effect(hobo, stacks[i].Item);
-                stacks[i].Count--;
-                if (CheckCount.Check(stacks[i])) return true;
-                DeleteItem(i);
-                return true;
-            }
-            return false;
-        }
 
         public List<IStack> ShowInventory()
         {
             return stacks;
         }
+
+        public void UpdateInventory(List<IStack> stacks)
+        {
+            this.stacks = stacks;
+        }
+
         public override string ToString()
         {
             string s = string.Empty;

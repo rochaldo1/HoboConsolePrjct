@@ -15,13 +15,13 @@ namespace HoboConsole.Model.Items
     public class Clothes : IItem, IEntity
     {
         public Guid Id { get; set; }
-        public decimal Price { get; }
+        public int Price { get; }
         public string Name { get; }
         public int Pleasure { get; } //Определяет как и как сильно влияет купленная вещь на эмоц. состояние
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemTypeEnum ItemType { get; }
 
-        public Clothes(Guid id, decimal price, string name, int pleasure, ItemTypeEnum itemTypeEnum)
+        public Clothes(Guid id, int price, string name, int pleasure, ItemTypeEnum itemTypeEnum)
         {
             Id = id;
             Price = price;
