@@ -15,7 +15,6 @@ namespace HoboConsole.Model.Stacks
         public IItem Item { get; set; }
         public int Count { get; set; }
 
-        //[JsonProperty()]
         public StackItems(Guid Id, IItem item, int count)
         {
             this.Id = Id;

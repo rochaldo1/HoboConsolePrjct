@@ -12,9 +12,7 @@ namespace HoboConsole.Model.Stacks
 {
     public interface IStack : IEntity
     {
-        
         public IItem Item { get; set; }
-
         public int Count { get; set; }
     }
 }

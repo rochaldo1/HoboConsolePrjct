@@ -24,6 +24,13 @@ namespace HoboConsolePrjct.Model.InventoryFolder
         {
         
         }
+
+        public bool CheckInventory(Inventory inventory)
+        {
+            if (inventory == null) return false;
+            return true;
+        }
+
         public void AddStack(IStack item)
         {
             if (stacks.Contains(item))
@@ -47,6 +54,11 @@ namespace HoboConsolePrjct.Model.InventoryFolder
         public void UpdateInventory(List<IStack> stacks)
         {
             this.stacks = stacks;
+        }
+
+        public IStack ShowItem(int i)
+        {
+            return stacks[i];
         }
 
         public override string ToString()

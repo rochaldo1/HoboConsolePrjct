@@ -5,6 +5,9 @@ using HoboConsolePrjct.Model.InventoryFolder;
 using HoboConsolePrjct.Model.Hobo;
 using HoboConsolePrjct.Data;
 using HoboConsolePrjct.Model.Places;
+using HoboConsolePrjct.Model.InventoryEvents;
+using HoboConsolePrjct.Model.Events;
+using HoboConsolePrjct.Model.Event;
 
 namespace HoboConsole
 {
@@ -12,98 +15,68 @@ namespace HoboConsole
     {
         static void Main(string[] args)
         {
-            HoboRepository serializeUsers = new HoboRepository("C:\\Users\\dima2\\Desktop\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\Hobos.json");
-            //StoreRepository storeRepository = new StoreRepository("C:\\Users\\dima2\\Desktop\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\Store.json");
-            //HospitalRepository hospitalRepository = new HospitalRepository("C:\\Users\\dima2\\Desktop\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\Hospital.json");
-            DrugDenRepository drugDenRepository = new DrugDenRepository("C:\\Users\\dima2\\Desktop\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\DrugDen.json");
-            //EstateEngencyRepository estateEngencyRepository = new EstateEngencyRepository("C:\\Users\\dima2\\Desktop\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\EstateEgency.json");
+            Random rand = new Random();
 
-            Inventory drugInventory = new Inventory();
-            DrugDen drugDen = new(Guid.NewGuid(), "Drug Dealer SHOP", drugInventory);
+            Inventory hoboinventory = new();
+            Hobo hobo = new(Guid.NewGuid(), "Саспенс", 100, 100, 100, 100, 100, hoboinventory);
 
+            Food food = new(Guid.NewGuid(), 10, "обед", 10, ItemTypeEnum.Food, 10, 10, 10);
+            StackItems stackItemsForOneFoodItem = new(Guid.NewGuid(), food, 3);
+            hobo.inventory.AddStack(stackItemsForOneFoodItem);
 
-            Drugs drugs = new(Guid.NewGuid(), 400, "Maria Ivanovna", 25, -2, -5, ItemTypeEnum.Drugs);
-            StackItems stackItems = new(Guid.NewGuid(), drugs, 1);
-            drugDen.inventory.AddStack(stackItems);
+            EventsList list = new();
+            GarbageEvents garbageEvents = new(Guid.NewGuid(), list);
+            Garbage garbage = new(Guid.NewGuid(), 5, "Glass bottle", 1, 0, ItemTypeEnum.Garbage);
+            StackItems stackItems = new(Guid.NewGuid(), garbage, 2);
 
-            Drugs drugs2 = new(Guid.NewGuid(), 600, "Mith", 20, -6, 10, ItemTypeEnum.Drugs);
-            StackItems stackItems2 = new(Guid.NewGuid(), drugs2, 1);
-            drugDen.inventory.AddStack(stackItems2);
-
-            Drugs drugs3 = new(Guid.NewGuid(), 1000, "Metaphore", 40, -15, 20, ItemTypeEnum.Drugs);
-            StackItems stackItems3 = new(Guid.NewGuid(), drugs3, 1);
-            drugDen.inventory.AddStack(stackItems3);
-
-            Drugs drugs4 = new(Guid.NewGuid(), 1200, "Crocodile", 20, -25, 60, ItemTypeEnum.Drugs);
-            StackItems stackItems4 = new(Guid.NewGuid(), drugs4, 1);
-            drugDen.inventory.AddStack(stackItems4);
-
-            Drugs drugs5 = new(Guid.NewGuid(), 1500, "Xmuriy", 50, -40, 90, ItemTypeEnum.Drugs);
-            StackItems stackItems5 = new(Guid.NewGuid(), drugs5, 1);
-            drugDen.inventory.AddStack(stackItems5);
+            Inventory inventory = new();
+            EventHobo eventHobo = new(Guid.NewGuid(), "You found some bottles!", 5, 0, -2, -1, inventory);
+            eventHobo.Inventory.AddStack(stackItems);
+            garbageEvents.EventsList.AddEvent(eventHobo);
 
 
-            drugDenRepository.Add(drugDen);
-            drugDenRepository.Save();
+            Garbage garbage2 = new(Guid.NewGuid(), 3, "Can", 1, -1, ItemTypeEnum.Garbage);
+            StackItems stackItems2 = new(Guid.NewGuid(), garbage2, 3);
+
+            Inventory inventory2 = new();
+            EventHobo eventHobo2 = new(Guid.NewGuid(), "You found some cans!", 5, 0, -2, -1, inventory2);
+            eventHobo2.Inventory.AddStack(stackItems2);
+            garbageEvents.EventsList.AddEvent(eventHobo2);
 
 
 
+            StackItems stackItems3 = new(Guid.NewGuid(), garbage, 1);
+
+            Inventory inventory3 = new();
+            EventHobo eventHobo3 = new(Guid.NewGuid(), "You found a bottle!", 5, 0, -2, -1, inventory3);
+            eventHobo3.Inventory.AddStack(stackItems3);
+            garbageEvents.EventsList.AddEvent(eventHobo3);
+
+
+            StackItems stackItems4 = new(Guid.NewGuid(), garbage2, 1);
+
+            Inventory inventory4 = new();
+            EventHobo eventHobo4 = new(Guid.NewGuid(), "You found a can!", 5, 0, -2, -1, inventory4);
+            eventHobo4.Inventory.AddStack(stackItems4);
+            garbageEvents.EventsList.AddEvent(eventHobo4);
 
 
 
+            Inventory inventory5 = new();
+            EventHobo eventHobo5 = new(Guid.NewGuid(), "You didn't find anything...", -3, -2, -2, -1, inventory5);
+            garbageEvents.EventsList.AddEvent(eventHobo5);
 
 
-            //serializeUsers.Load();
-            //List<Hobo> usersFromJson = serializeUsers.GetHobos();
-            //Hobo hobo = usersFromJson[0];
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //Console.WriteLine(hobo.inventory.ToString() + "\n");
+            Inventory inventory6 = new();
+            EventHobo eventHobo6 = new(Guid.NewGuid(), "You didn't find anything and got hurt!", -5, -5, -5, -1, inventory6);
+            garbageEvents.EventsList.AddEvent(eventHobo6);
 
-            //Food food = new Food(Guid.NewGuid(), 500, "NiceFOOD", 25, ItemTypeEnum.Food, 23, 5, 21);
-            //StackItems stackFood = new StackItems(Guid.NewGuid(), food, 3);
-            //Food food2 = new Food(Guid.NewGuid(), 100000, "POP", -12, ItemTypeEnum.Food, -51, -31, 30);
-            //StackItems stackFood2 = new StackItems(Guid.NewGuid(), food2, 1);
-            //Food food3 = new Food(Guid.NewGuid(), 10, "Bread", 2, ItemTypeEnum.Food, 5, 5, 1);
-            //StackItems stackFood3 = new StackItems(Guid.NewGuid(), food3, 1);
-            //Clothes clothes = new Clothes(Guid.NewGuid(), 600, "CLOTHES", 2, ItemTypeEnum.Clothes);
-            //StackItems stackClothes = new(Guid.NewGuid(), clothes, 5);
 
-            //Inventory shopInventory = new();
+            Console.WriteLine(hobo.ToString());
 
-            //Stores stores = new(Guid.NewGuid(),"SHOOOP",shopInventory);
-            //stores.inventory.AddStack(stackFood3);
+            garbageEvents.ApplyEffect(hobo, 3);
 
-            //Inventory inventory = new();
-            //Hobo hobo = new(Guid.NewGuid(), "Basic hobo", 50, 73, 40, 50, 500, inventory);
-            //hobo.inventory.AddStack(stackFood);
-            //hobo.inventory.AddStack(stackFood2);
-            //hobo.inventory.AddStack(stackClothes);
-
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.UseItem(hobo, 1);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.UseItem(hobo, 0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.UseItem(hobo, 0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.SellItem(0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.BuyItem(stores, 0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.BuyItem(stores, 0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.BuyItem(stores, 0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.BuyItem(stores, 0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.BuyItem(stores, 0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.BuyItem(stores, 0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //hobo.BuyItem(stores, 0);
-            //Console.WriteLine(hobo.ToString() + "\n");
-            //serializeUsers.Add(hobo);
-            //serializeUsers.Save();
+            Console.WriteLine(hobo.ToString());
         }
     }
 }

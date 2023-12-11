@@ -19,7 +19,6 @@ namespace HoboConsolePrjct.Model.Hobo
         public int Satiation { get; set; }
         public int EmotionalState { get; set; }
         public int Money { get; set; }
-        //[JsonProperty]
         public Inventory inventory {  get; set; }
 
         public Hobo(Guid id ,string name, int health, int energy, int satiation, int emotionalState, int money, Inventory inventory)
@@ -36,7 +35,7 @@ namespace HoboConsolePrjct.Model.Hobo
 
         public override string ToString()
         {
-            return $"Имя: {Name}\nЗдоровье: {Health}\nЭнергия: {Energy}\nНАСЫЩЕНИЕ: {Satiation}\nЭМОТИОНАЛ ДАМАГЕ:{EmotionalState}\n ДеньГИ: {Money}\n" + inventory.ToString();
+            return $"Имя: {Name}\nЗдоровье: {Health}\nЭнергия: {Energy}\nНАСЫЩЕНИЕ: {Satiation}\nЭМОТИОНАЛ ДАМАГЕ:{EmotionalState}\nДеньги: {Money}\n" + inventory.ToString();
         }
         public bool UseItem(IHobo hobo, int i)
         {
