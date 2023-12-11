@@ -24,7 +24,15 @@ namespace HoboConsolePrjct.Model.InventoryFolder
         {
         
         }
-        public void AddStack(IStack item) => stacks.Add(item);
+        public void AddStack(IStack item)
+        {
+            if (stacks.Contains(item))
+            {
+                stacks[stacks.IndexOf(item)].Count++;
+                return;
+            }
+            stacks.Add(item);
+        }
 
         public void DeleteItem(int i)
         {
@@ -47,9 +55,9 @@ namespace HoboConsolePrjct.Model.InventoryFolder
             for (var i = 0; i < stacks.Count; i++)
             {
                 s += stacks[i].Item.Name.ToString();
-                s += " " + stacks[i].Count.ToString();
+                s += " " + stacks[i].Count.ToString() + " ";
             }
-            return s;
+            return "Inventory: " + s;
         }
 
     }

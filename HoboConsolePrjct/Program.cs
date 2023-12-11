@@ -4,6 +4,7 @@ using HoboConsole.Model.Stacks;
 using HoboConsolePrjct.Model.InventoryFolder;
 using HoboConsolePrjct.Model.Hobo;
 using HoboConsolePrjct.Data;
+using HoboConsolePrjct.Model.Places;
 
 namespace HoboConsole
 {
@@ -23,8 +24,15 @@ namespace HoboConsole
             StackItems stackFood = new StackItems(Guid.NewGuid(), food, 3);
             Food food2 = new Food(Guid.NewGuid(), 100000, "POP", -12, ItemTypeEnum.Food, -51, -31, 30);
             StackItems stackFood2 = new StackItems(Guid.NewGuid(), food2, 1);
+            Food food3 = new Food(Guid.NewGuid(), 10, "Bread", 2, ItemTypeEnum.Food, 5, 5, 1);
+            StackItems stackFood3 = new StackItems(Guid.NewGuid(), food3, 1);
             Clothes clothes = new Clothes(Guid.NewGuid(), 600, "CLOTHES", 2, ItemTypeEnum.Clothes);
             StackItems stackClothes = new(Guid.NewGuid(), clothes, 5);
+
+            Inventory shopInventory = new();
+
+            Stores stores = new(Guid.NewGuid(),"SHOOOP",shopInventory);
+            stores.inventory.AddStack(stackFood3);
 
             Inventory inventory = new();
             Hobo hobo = new(Guid.NewGuid(), "Basic hobo", 50, 73, 40, 50, 500, inventory);
@@ -40,6 +48,10 @@ namespace HoboConsole
             hobo.UseItem(hobo, 0);
             Console.WriteLine(hobo.ToString() + "\n");
             hobo.SellItem(0);
+            Console.WriteLine(hobo.ToString() + "\n");
+            hobo.BuyItem(stores, 0);
+            Console.WriteLine(hobo.ToString() + "\n");
+            hobo.BuyItem(stores, 0);
             Console.WriteLine(hobo.ToString() + "\n");
             //serializeUsers.Add(hobo);
             //serializeUsers.Save();
