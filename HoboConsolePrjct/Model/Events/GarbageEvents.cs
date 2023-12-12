@@ -24,9 +24,10 @@ namespace HoboConsolePrjct.Model.Event
             EventsList = eventsList;
         }
 
-        public override string ToString()
+        public string ToString(int whatEvent)
         {
-            return EventsList.ToString();
+            List<IEvents> listOfEvents = EventsList.ShowEvent();
+            return listOfEvents[whatEvent].Text;
         }
 
         public void ApplyEffect(IHobo hobo, int whatEvent)

@@ -32,7 +32,16 @@
             drugDenRepository.Add(drugDen);
             drugDenRepository.Save();
 
+            HoboRepository hoboRepository = new("C:\\Users\\Artur\\source\\repos\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\Hobos.json");
+            hoboRepository.Load();
+            List<Hobo> hobos = hoboRepository.GetHobos();
+            Hobo hobo = hobos[0];
 
+            Inventory inventory = new();
+            HoboRepository hoboRepository = new("C:\\Users\\Artur\\source\\repos\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\Hobos.json");
+            Hobo hobo = new(Guid.NewGuid(), "Hobo", 100, 100, 100, 100, 100, inventory);
+            hoboRepository.Add(hobo);
+            hoboRepository.Save();
 
 
 

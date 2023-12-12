@@ -35,7 +35,7 @@ namespace HoboConsolePrjct.Model.Hobo
 
         public override string ToString()
         {
-            return $"Имя: {Name}\nЗдоровье: {Health}\nЭнергия: {Energy}\nНАСЫЩЕНИЕ: {Satiation}\nЭМОТИОНАЛ ДАМАГЕ:{EmotionalState}\nДеньги: {Money}\n" + inventory.ToString();
+            return $"Имя: {Name}\nЗдоровье: {Health}\nЭнергия: {Energy}\nНАСЫЩЕНИЕ: {Satiation}\nЭмоциональное состояние: {EmotionalState}\nДеньги: {Money}\n" + inventory.ToString();
         }
         public bool UseItem(IHobo hobo, int i)
         {

@@ -20,6 +20,11 @@ namespace HoboConsolePrjct.Model.Events
             Id = id;
             EventsList = eventsList;
         }
+        public string ToString(int whatEvent)
+        {
+            List<IEvents> listOfEvents = EventsList.ShowEvent();
+            return listOfEvents[whatEvent].Text;
+        }
 
         public void ApplyEffect(IHobo hobo, int whatEvent)
         {

@@ -67,7 +67,7 @@ namespace HoboConsolePrjct.Model.InventoryFolder
             for (var i = 0; i < stacks.Count; i++)
             {
                 s += stacks[i].Item.Name.ToString();
-                s += " " + stacks[i].Count.ToString() + " ";
+                s += " " + stacks[i].Count.ToString() + "; ";
             }
             return "Inventory: " + s;
         }
