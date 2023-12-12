@@ -1,42 +1,29 @@
-﻿using HoboConsole.Model.Items.Base;
+﻿using HoboConsole.Model.Stacks;
 using HoboConsolePrjct.Model.Effects;
-using HoboConsolePrjct.Model.Events;
 using HoboConsolePrjct.Model.Hobo;
 using HoboConsolePrjct.Model.InventoryEvents;
-using HoboConsolePrjct.Model.InventoryFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HoboConsole.Model.Stacks;
 
-namespace HoboConsolePrjct.Model.Event
+namespace HoboConsolePrjct.Model.Events
 {
-    public class GarbageEvents : IEntity
+    public class AlmsEvents : IEntity
     {
         public Guid Id { get; set; }
         public EventsList EventsList { get; set; }
 
-        public GarbageEvents(Guid id, EventsList eventsList) 
+        public AlmsEvents(Guid id, EventsList eventsList)
         {
             Id = id;
             EventsList = eventsList;
         }
 
-        public override string ToString()
-        {
-            return EventsList.ToString();
-        }
-
         public void ApplyEffect(IHobo hobo, int whatEvent)
         {
             List<IEvents> list = EventsList.ShowEvent();
-            List<IStack> stacks = list[whatEvent].Inventory.ShowInventory();
-            for (int i = 0; i < stacks.Count; i++)
-            {
-                hobo.inventory.AddStack(stacks[i]);
-            }
             hobo.Money += list[whatEvent].Money;
             ChangeValueStatic.HealthChange(hobo, list[whatEvent]);
             ChangeValueStatic.EnergyChange(hobo, list[whatEvent]);

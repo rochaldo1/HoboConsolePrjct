@@ -18,6 +18,7 @@ namespace HoboConsolePrjct.Model.Events
         public int Healthy { get; set; }
         public int EnergyBoost { get; set; }
         public int Nutrition { get; set; }
+        public int Money { get; set; }
         public Inventory Inventory { get; set; }
     }
 }

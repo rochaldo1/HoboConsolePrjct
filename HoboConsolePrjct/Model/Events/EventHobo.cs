@@ -17,9 +17,10 @@ namespace HoboConsolePrjct.Model.Events
         public int Healthy { get; set; }
         public int EnergyBoost { get; set; }
         public int Nutrition { get; set; }
+        public int Money { get; set; }
         public Inventory Inventory { get; set; }
 
-        public EventHobo(Guid id, string text, int pleasure, int healthy, int energyBoost, int nutrition, Inventory inventory)
+        public EventHobo(Guid id, string text, int pleasure, int healthy, int energyBoost, int nutrition, int money, Inventory inventory)
         {
             Id = id;
             Text = text;
@@ -27,6 +28,7 @@ namespace HoboConsolePrjct.Model.Events
             Healthy = healthy;
             EnergyBoost = energyBoost;
             Nutrition = nutrition;
+            Money = money;
             Inventory = inventory;
         }
 

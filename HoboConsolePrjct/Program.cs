@@ -16,7 +16,8 @@ namespace HoboConsole
         static void Main(string[] args)
         {
             Random rand = new Random();
-
+            AlmsEventsRepository almsEventsRepository = new("C:\\Users\\Artur\\source\\repos\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\AlmsEvents.json");
+            JobEventsRepository jobEventsRepository = new("C:\\Users\\Artur\\source\\repos\\HoboConsolePrjct\\HoboConsolePrjct\\bin\\Debug\\net8.0\\JobEvents.json");
             Inventory hoboinventory = new();
             Hobo hobo = new(Guid.NewGuid(), "Саспенс", 100, 100, 100, 100, 100, hoboinventory);
 
@@ -25,58 +26,29 @@ namespace HoboConsole
             hobo.inventory.AddStack(stackItemsForOneFoodItem);
 
             EventsList list = new();
-            GarbageEvents garbageEvents = new(Guid.NewGuid(), list);
-            Garbage garbage = new(Guid.NewGuid(), 5, "Glass bottle", 1, 0, ItemTypeEnum.Garbage);
-            StackItems stackItems = new(Guid.NewGuid(), garbage, 2);
+            Inventory eventInventory = new();
+            EventHobo eventHobo = new(Guid.NewGuid(), "You worked at a construction site and got 250 coins", -10, -5, -5, 0, 250, eventInventory);
+            JobEvents jobEvents = new(Guid.NewGuid(), list);
+            jobEvents.EventsList.AddEvent(eventHobo);
 
-            Inventory inventory = new();
-            EventHobo eventHobo = new(Guid.NewGuid(), "You found some bottles!", 5, 0, -2, -1, inventory);
-            eventHobo.Inventory.AddStack(stackItems);
-            garbageEvents.EventsList.AddEvent(eventHobo);
+            Inventory eventInventory2 = new();
+            EventHobo eventHobo2 = new(Guid.NewGuid(), "You handed out flyers and got 100 coins!", -5, -2, -2, 0, 100, eventInventory2);
+            jobEvents.EventsList.AddEvent(eventHobo2);
 
+            Inventory eventInventory3 = new();
+            EventHobo eventHobo3 = new(Guid.NewGuid(), "You swept the yard and got 150 coins", -7, -3, -5, 0, 150, eventInventory3);
+            jobEvents.EventsList.AddEvent(eventHobo3);
 
-            Garbage garbage2 = new(Guid.NewGuid(), 3, "Can", 1, -1, ItemTypeEnum.Garbage);
-            StackItems stackItems2 = new(Guid.NewGuid(), garbage2, 3);
+            Inventory eventInventory4 = new();
+            EventHobo eventHobo4 = new(Guid.NewGuid(), "You washed the floors in the store and got 125 coins", -6, -3, -4, 0, 125, eventInventory4);
+            jobEvents.EventsList.AddEvent(eventHobo4);
 
-            Inventory inventory2 = new();
-            EventHobo eventHobo2 = new(Guid.NewGuid(), "You found some cans!", 5, 0, -2, -1, inventory2);
-            eventHobo2.Inventory.AddStack(stackItems2);
-            garbageEvents.EventsList.AddEvent(eventHobo2);
+            Inventory eventInventory5 = new();
+            EventHobo eventHobo5 = new(Guid.NewGuid(), "You worked hard but didn't get anything... You got scammed!", -10, -3, -5, 0, 0, eventInventory5);
+            jobEvents.EventsList.AddEvent(eventHobo5);
 
-
-
-            StackItems stackItems3 = new(Guid.NewGuid(), garbage, 1);
-
-            Inventory inventory3 = new();
-            EventHobo eventHobo3 = new(Guid.NewGuid(), "You found a bottle!", 5, 0, -2, -1, inventory3);
-            eventHobo3.Inventory.AddStack(stackItems3);
-            garbageEvents.EventsList.AddEvent(eventHobo3);
-
-
-            StackItems stackItems4 = new(Guid.NewGuid(), garbage2, 1);
-
-            Inventory inventory4 = new();
-            EventHobo eventHobo4 = new(Guid.NewGuid(), "You found a can!", 5, 0, -2, -1, inventory4);
-            eventHobo4.Inventory.AddStack(stackItems4);
-            garbageEvents.EventsList.AddEvent(eventHobo4);
-
-
-
-            Inventory inventory5 = new();
-            EventHobo eventHobo5 = new(Guid.NewGuid(), "You didn't find anything...", -3, -2, -2, -1, inventory5);
-            garbageEvents.EventsList.AddEvent(eventHobo5);
-
-
-            Inventory inventory6 = new();
-            EventHobo eventHobo6 = new(Guid.NewGuid(), "You didn't find anything and got hurt!", -5, -5, -5, -1, inventory6);
-            garbageEvents.EventsList.AddEvent(eventHobo6);
-
-
-            Console.WriteLine(hobo.ToString());
-
-            garbageEvents.ApplyEffect(hobo, 3);
-
-            Console.WriteLine(hobo.ToString());
+            jobEventsRepository.Add(jobEvents);
+            jobEventsRepository.Save();
         }
     }
 }
