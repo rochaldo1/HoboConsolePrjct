@@ -86,7 +86,7 @@ namespace HoboConsole
             Console.WriteLine(hobo.ToString() + "\n");
 
             Console.WriteLine("Теперь применим вещь из инвентаря (хлеб):\n");
-            hobo.UseItem(hobo, 0);
+            hobo.UseItem(0);
             Console.WriteLine(hobo.ToString() + "\n");
 
             Console.WriteLine("Ещё раз выполним действия, чтобы подзаработать денег:\n");
@@ -122,7 +122,7 @@ namespace HoboConsole
             string _drugIdx;
             do _drugIdx = Console.ReadLine();
             while (!int.TryParse(_drugIdx, out drug));
-            hobo.UseItem(hobo, drug-1);
+            hobo.UseItem(drug-1);
 
             Console.WriteLine(hobo.ToString() + "\n");
 
